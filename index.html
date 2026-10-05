@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chủ tịch Hồ Chí Minh - Cuộc đời và Sự nghiệp</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #b71c1c;
+            --dark-red: #7f0000;
+            --gold: #ffb300;
+            --dark-gold: #c68400;
+            --bg-light: #fcf9f2;
+            --text-dark: #2c2c2c;
+            --card-bg: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; }
+        h1, h2, h3, h4 { font-family: 'Merriweather', serif; }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--dark-red);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .nav-logo { color: white; font-weight: bold; font-family: 'Merriweather', serif; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .nav-logo i { color: var(--gold); }
+        .nav-links { display: flex; list-style: none; gap: 1.5rem; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Header Banner */
+        header {
+            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
+            color: white;
+            text-align: center;
+            padding: 7rem 1rem 4rem 1rem;
+            position: relative;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        header h1 { font-size: 2.8rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 6px rgba(0,0,0,0.4); }
+        header p { font-size: 1.25rem; color: var(--gold); font-weight: 300; }
+        .badge-star { font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1rem; }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            color: var(--dark-red);
+            margin-bottom: 2.5rem;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 4rem;
+            border-left: 6px solid var(--primary-red);
+        }
+
+        .intro-section h2 { color: var(--dark-red); margin-bottom: 1.2rem; font-size: 2rem; }
+        .intro-section p { font-size: 1.1rem; color: #444; margin-bottom: 1.2rem; text-align: justify; }
+
+        /* Ideology / Values Section */
+        .ideology-section { margin-bottom: 4rem; }
+        .ideology-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .ideology-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--gold);
+            transition: transform 0.3s;
+        }
+        .ideology-card:hover { transform: translateY(-5px); }
+        .ideology-card i { font-size: 2.5rem; color: var(--primary-red); margin-bottom: 1rem; }
+        .ideology-card h3 { color: var(--dark-red); margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .ideology-card p { font-size: 0.95rem; color: #666; }
+
+        /* Timeline Section */
+        .timeline-section { margin-bottom: 4rem; }
+        .timeline { position: relative; padding: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: var(--dark-gold); transform: translateX(-50%); }
+        .timeline-item { padding: 1rem 2rem; position: relative; width: 50%; box-sizing: border-box; cursor: pointer; }
+        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+        .timeline-item:nth-child(even) { left: 50%; text-align: left; }
+        .timeline-dot { position: absolute; width: 22px; height: 22px; background: var(--primary-red); border: 3px solid var(--gold); border-radius: 50%; top: 1.5rem; z-index: 10; }
+        .timeline-item:nth-child(odd) .timeline-dot { right: -11px; }
+        .timeline-item:nth-child(even) .timeline-dot { left: -11px; }
+        
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--primary-red);
+            transition: all 0.3s ease;
+            text-align: left !important;
+        }
+        .timeline-content:hover { transform: scale(1.02); background: #fffdf5; box-shadow: 0 8px 22px rgba(0,0,0,0.15); }
+        
+        .timeline-img-box { width: 100%; height: 190px; border-radius: 6px; overflow: hidden; margin-bottom: 1rem; background: #f4eee1; position: relative; display: flex; align-items: center; justify-content: center; }
+        .timeline-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .timeline-content:hover .timeline-img { transform: scale(1.05); }
+        
+        .img-fallback { display: none; flex-direction: column; align-items: center; justify-content: center; color: #666; font-size: 0.9rem; text-align: center; padding: 1rem; width: 100%; height: 100%; background: #f4eee1; }
+        .img-fallback i { font-size: 2.2rem; color: var(--primary-red); margin-bottom: 0.5rem; }
+
+        .timeline-content h3 { color: var(--dark-red); margin-bottom: 0.4rem; font-size: 1.15rem; }
+        .timeline-content .year { display: inline-block; background: var(--gold); color: #222; padding: 0.2rem 0.7rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold; margin-bottom: 0.6rem; }
+        .timeline-content p { font-size: 0.95rem; color: #555; }
+        .click-hint { font-size: 0.82rem; color: var(--primary-red); margin-top: 0.9rem; font-style: italic; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+
+        /* Guestbook Section (Sổ vàng tri ân) */
+        .guestbook-section {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 3rem;
+            border-top: 5px solid var(--gold);
+        }
+
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--dark-red); }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+        }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .btn-submit {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover { background-color: var(--dark-red); }
+
+        .tribute-list { margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem; }
+        .tribute-item {
+            background: #fffdf5;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .tribute-item h4 { color: var(--dark-red); font-size: 1rem; margin-bottom: 0.2rem; }
+        .tribute-item p { color: #555; font-size: 0.95rem; }
+
+        /* Modal Popup */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); justify-content: center; align-items: center; padding: 1rem; }
+        .modal-content { background-color: var(--card-bg); padding: 2.5rem; border-radius: 10px; max-width: 600px; width: 100%; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-top: 6px solid var(--primary-red); animation: modalFadeIn 0.3s ease; }
+        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .close-btn { position: absolute; top: 1rem; right: 1.5rem; font-size: 1.8rem; color: #aaa; cursor: pointer; transition: color 0.2s; }
+        .close-btn:hover { color: var(--primary-red); }
+        .modal-content h2 { color: var(--dark-red); margin-bottom: 0.5rem; }
+        .modal-content .modal-year { color: var(--dark-gold); font-weight: bold; margin-bottom: 1rem; display: block; font-size: 1.1rem; }
+        .modal-content p { color: #444; line-height: 1.8; text-align: justify; font-size: 1.05rem; }
+
+        /* Footer */
+        footer { background-color: #1a1a1a; color: #aaa; text-align: center; padding: 2.5rem 1rem; margin-top: 3rem; font-size: 0.9rem; border-top: 4px solid var(--gold); }
+        footer p { margin-bottom: 0.5rem; }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 1rem; text-align: left !important; }
+            .timeline-item:nth-child(even) { left: 0; }
+            .timeline-dot { left: 10px !important; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo"><i class="fas fa-star"></i> Chủ tịch Hồ Chí Minh</div>
+        <ul class="nav-links">
+            <li><a href="#gioi-thieu">Giới thiệu</a></li>
+            <li><a href="#tu-tuong">Tư tưởng & Đạo đức</a></li>
+            <li><a href="#cot-moc">Cột mốc lịch sử</a></li>
+            <li><a href="#tri-an">Sổ vàng tri ân</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Banner -->
+    <header>
+        <div class="badge-star"><i class="fas fa-star"></i></div>
+        <h1>Chủ tịch Hồ Chí Minh</h1>
+        <p>Anh hùng giải phóng dân tộc - Danh nhân văn hóa thế giới</p>
+    </header>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <section id="gioi-thieu" class="intro-section">
+            <h2>Cuộc đời và Sự nghiệp vĩ đại</h2>
+            <p>Chủ tịch Hồ Chí Minh (tên khai sinh là Nguyễn Sinh Cung, các tên gọi khác: Nguyễn Tất Thành, Nguyễn Ái Quốc,...), sinh ngày 19 tháng 5 năm 1890 tại làng Kim Liên, huyện Nam Đàn, tỉnh Nghệ An. Người là lãnh tụ thiên tài, anh hùng giải phóng dân tộc của Việt Nam và là nhà chiến sĩ lỗi lạc của phong trào cộng sản quốc tế.</p>
+            <p>Cả cuộc đời Người đã hy sinh quên mình cho sự nghiệp đấu tranh giành độc lập, tự do cho Tổ quốc, mang lại ấm no, hạnh phúc cho nhân dân. Tư tưởng, đạo đức và phong cách của Người mãi là ngọn đuốc soi đường cho các thế hệ mai sau noi theo trên con đường xây dựng và bảo vệ đất nước.</p>
+        </section>
+
+        <!-- Ideology / Core Values Section -->
+        <section id="tu-tuong" class="ideology-section">
+            <h2 class="section-title">Tư Tưởng & Đạo Đức Sáng Ngời</h2>
+            <div class="ideology-grid">
+                <div class="ideology-card">
+                    <i class="fas fa-flag"></i>
+                    <h3>Độc lập dân tộc</h3>
+                    <p>Gắn liền độc lập dân tộc với chủ nghĩa xã hội, khẳng định "Không có gì quý hơn độc lập, tự do".</p>
+                </div>
+                <div class="ideology-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Lòng yêu nước, thương dân</h3>
+                    <p>Suốt đời phụng sự Tổ quốc, phục vụ nhân dân, đặt lợi ích của nhân dân lên trên hết.</p>
+                </div>
+                <div class="ideology-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Cần, Kiệm, Liêm, Chính</h3>
+                    <p>Đức tính cốt lõi của người cán bộ cách mạng, chí công vô tư, lối sống giản dị, mẫu mực.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="cot-moc" class="timeline-section">
+            <h2 class="section-title">Những Cột Mốc Lịch Sử</h2>
+            <p style="text-align: center; margin-bottom: 2.5rem; color: #666; font-style: italic;">Nhấn vào từng mốc sự kiện bên dưới để đọc câu chuyện tư liệu chi tiết</p>
+            
+            <div class="timeline">
+                <!-- Sự kiện 1 -->
+                <div class="timeline-item" onclick="openModal('nha-rong')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-img-box">
+                            <img src="https://khodulieu.sohoa.tuyenquang.gov.vn/congthongtin/media/b25910f3e96ac038b0c8f676284df3e0.jpg" alt="Bến cảng Nhà Rồng" class="timeline-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="img-fallback"><i class="fas fa-image"></i><span>Bến cảng Nhà Rồng (1911)</span></div>
+                        </div>
+                        <span class="year">5/6/1911</span>
+                        <h3>Ra bến cảng Nhà Rồng lên đường cứu nước</h3>
+                        <p>Người thanh niên yêu nước Nguyễn Tất Thành rời bến cảng Nhà Rồng trên con tàu Amiral Latouche-Tréville...</p>
+                        <div class="click-hint"><i class="fas fa-hand-pointer"></i> Nhấn để đọc câu chuyện chi tiết</div>
+                    </div>
+                </div>
+
+                <!-- Sự kiện 2 -->
+                <div class="timeline-item" onclick="openModal('nguyen-ai-quoc')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-img-box">
+                            <img src="https://file.qdnd.vn/data/images/0/2021/05/29/phucthang/nguyen-ai-quoc.jpg?dpi=150&quality=100&w=575" alt="Nguyễn Ái Quốc" class="timeline-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="img-fallback"><i class="fas fa-image"></i><span>Nguyễn Ái Quốc (1919)</span></div>
+                        </div>
+                        <span class="year">18/6/1919</span>
+                        <h3>Gửi Yêu sách của nhân dân An Nam</h3>
+                        <p>Nguyễn Ái Quốc thay mặt những người Việt Nam yêu nước gửi bản Yêu sách tới Hội nghị Versailles...</p>
+                        <div class="click-hint"><i class="fas fa-hand-pointer"></i> Nhấn để đọc câu chuyện chi tiết</div>
+                    </div>
+                </div>
+
+                <!-- Sự kiện 3 -->
+                <div class="timeline-item" onclick="openModal('dang-cong-san')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-img-box">
+                            <img src="https://www.vwu.vn/documents/20182/2628649/24_Jan_2021_070539_GMTdhdang.jpg/8ce3959f-0fde-4c3c-afd3-dbd8d8ab5999" alt="Thành lập Đảng" class="timeline-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="img-fallback"><i class="fas fa-image"></i><span>Đảng Cộng sản Việt Nam (1930)</span></div>
+                        </div>
+                        <span class="year">3/2/1930</span>
+                        <h3>Thành lập Đảng Cộng sản Việt Nam</h3>
+                        <p>Chủ tịch Hồ Chí Minh chủ trì Hội nghị hợp nhất các tổ chức cộng sản, mở ra bước ngoặt vĩ đại...</p>
+                        <div class="click-hint"><i class="fas fa-hand-pointer"></i> Nhấn để đọc câu chuyện chi tiết</div>
+                    </div>
+                </div>
+
+                <!-- Sự kiện 4 -->
+                <div class="timeline-item" onclick="openModal('tuyen-ngon-doc-lap')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-img-box">
+                            <img src="https://file3.qdnd.vn/data/images/0/2022/09/01/tvkimgiang/bac%20ho%20doc%20tuyen%20ngon.jpg?dpi=150&quality=100&w=870" alt="Tuyên ngôn Độc lập" class="timeline-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="img-fallback"><i class="fas fa-image"></i><span>Tuyên ngôn Độc lập (1945)</span></div>
+                        </div>
+                        <span class="year">2/9/1945</span>
+                        <h3>Tuyên ngôn Độc lập - Khai sinh nước VNDCH</h3>
+                        <p>Chủ tịch Hồ Chí Minh đọc bản Tuyên ngôn Độc lập tại Quảng trường Ba Đình lịch sử...</p>
+                        <div class="click-hint"><i class="fas fa-hand-pointer"></i> Nhấn để đọc câu chuyện chi tiết</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guestbook Section (Sổ vàng tri ân) -->
+        <section id="tri-an" class="guestbook-section">
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Sổ Vàng Tri Ân</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #666;">Gửi gắm những lời tri ân, tình cảm kính trọng và biết ơn sâu sắc đến Chủ tịch Hồ Chí Minh vĩ đại.</p>
+            
+            <form id="tributeForm" onsubmit="addTribute(event)">
+                <div class="form-group">
+                    <label for="userName">Họ và tên của bạn:</label>
+                    <input type="text" id="userName" placeholder="Nhập họ và tên..." required>
+                </div>
+                <div class="form-group">
+                    <label for="userMessage">Lời tri ân / Cảm nghĩ:</label>
+                    <textarea id="userMessage" placeholder="Viết cảm nghĩ hoặc lời tri ân kính dâng lên Bác..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Gửi Lời Tri Ân</button>
+            </form>
+
+            <div class="tribute-list" id="tributeList">
+                <h3 style="color: var(--dark-red); margin-bottom: 1rem; font-size: 1.2rem;">Lời tri ân từ cộng đồng:</h3>
+                <div class="tribute-item">
+                    <h4>Nguyễn Văn An</h4>
+                    <p>Kính dâng lên Bác ngàn vạn lời ca và lòng biết ơn vô hạn. Chúng cháu nguyện mãi học tập và làm theo tư tưởng, đạo đức của Người!</p>
+                </div>
+                <div class="tribute-item">
+                    <h4>Trần Thị Mai</h4>
+                    <p>Trang web vô cùng ý nghĩa và trang trọng. Nhớ ơn Bác - vị lãnh tụ kính yêu của dân tộc Việt Nam.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Popup Chi Tiết Sự Kiện -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <span id="modalYear" class="modal-year"></span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription" style="margin-top: 1rem;"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Trang thông tin tưởng niệm và học tập tư tưởng, đạo đức, phong cách Chủ tịch Hồ Chí Minh.</p>
+        <p>&copy; 2026 Bản quyền thuộc về dự án tưởng niệm.</p>
+    </footer>
+
+    <script>
+        const eventData = {
+            "nha-rong": {
+                year: "5/6/1911",
+                title: "Ra bến cảng Nhà Rồng lên đường cứu nước",
+                description: "Vào ngày 5/6/1911, tại bến cảng Nhà Rồng (Sài Gòn), người thanh niên yêu nước Nguyễn Tất Thành (khi đó 21 tuổi) với tên gọi Văn Ba đã xin làm phụ bếp trên con tàu buôn Pháp Amiral Latouche-Tréville. Quyết định rời Tổ quốc sang phương Tây không phải để cầu cứu các nước phong kiến hay tư bản, mà là để trực tiếp thấu hiểu 'tự do, bình đẳng, bác ái' ở ngay sào huyệt thực dân, từ đó tìm ra con đường cứu nước đúng đắn nhất cho dân tộc Việt Nam."
+            },
+            "nguyen-ai-quoc": {
+                year: "18/6/1919",
+                title: "Gửi Yêu sách của nhân dân An Nam tới Hội nghị Versailles",
+                description: "Nhân dịp Hội nghị Versailles diễn ra tại Pháp, thay mặt những người Việt Nam yêu nước, Nguyễn Ái Quốc đã ký tên và gửi bản Yêu sách gồm 8 điểm đòi Chính phủ Pháp phải thừa nhận các quyền tự do, dân chủ, quyền bình đẳng và quyền tự quyết của nhân dân Việt Nam. Dù không được hội nghị chấp nhận, tiếng vang của bản yêu sách đã làm chấn động dư luận quốc tế, thức tỉnh tinh thần đấu tranh của nhân dân thuộc địa."
+            },
+            "dang-cong-san": {
+                year: "3/2/1930",
+                title: "Thành lập Đảng Cộng sản Việt Nam",
+                description: "Từ ngày 6/1 đến 7/2/1930, tại Cửu Long (Hương Cảng, Trung Quốc), lãnh tụ Nguyễn Ái Quốc đã chủ trì Hội nghị hợp nhất ba tổ chức cộng sản (Đông Dương Cộng sản đảng, An Nam Cộng sản đảng và Đông Dương Cộng sản liên đoàn) thành một chính đảng duy nhất: Đảng Cộng sản Việt Nam. Sự kiện lịch sử này chấm dứt thời kỳ khủng hoảng sâu sắc về đường lối cứu nước, đánh dấu bước ngoặt vĩ đại của cách mạng Việt Nam."
+            },
+            "tuyen-ngon-doc-lap": {
+                year: "2/9/1945",
+                title: "Tuyên ngôn Độc lập - Khai sinh nước VNDCH",
+                description: "Chiều ngày 2 tháng 9 năm 1945, tại Quảng trường Ba Đình lịch sử (Hà Nội), trước hàng vạn đồng bào cả nước, Chủ tịch Hồ Chí Minh đã thay mặt Chính phủ lâm thời trịnh trọng đọc bản Tuyên ngôn Độc lập. Bản Tuyên ngôn mở đầu bằng câu nói bất hủ: 'Tất cả mọi người sinh ra đều có quyền bình đẳng...', khẳng định quyền độc lập, tự do thiêng liêng và khai sinh ra nước Việt Nam Dân chủ Cộng hòa."
+            }
+        };
+
+        function openModal(id) {
+            const data = eventData[id];
+            if(data) {
+                document.getElementById('modalYear').innerText = data.year;
+                document.getElementById('modalTitle').innerText = data.title;
+                document.getElementById('modalDescription').innerText = data.description;
+                document.getElementById('eventModal').style.display = 'flex';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('eventModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Xử lý thêm lời tri ân vào Sổ vàng
+        function addTribute(event) {
+            event.preventDefault();
+            const name = document.getElementById('userName').value.trim();
+            const message = document.getElementById('userMessage').value.trim();
+
+            if(name && message) {
+                const list = document.getElementById('tributeList');
+                const newItem = document.createElement('div');
+                newItem.className = 'tribute-item';
+                newItem.innerHTML = `<h4>${escapeHtml(name)}</h4><p>${escapeHtml(message)}</p>`;
+                
+                // Thêm lên đầu danh sách
+                list.insertBefore(newItem, list.children[1]);
+
+                // Reset form
+                document.getElementById('tributeForm').reset();
+                alert('Cảm ơn bạn đã gửi lời tri ân kính dâng lên Bác!');
+            }
+        }
+
+        // Hàm bảo mật chống lỗi ký tự HTML đặc biệt
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
